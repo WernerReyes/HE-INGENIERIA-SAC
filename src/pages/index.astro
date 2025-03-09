@@ -1,0 +1,50 @@
+---
+import Hero from "@sections/Hero.astro";
+import AboutUs from "@sections/AboutUs.astro";
+import Contact from "@sections/Contact.astro";
+
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout title="Astro Basics">
+  <Hero />
+  <AboutUs />
+  <Contact />
+</Layout>
+
+<style is:global>
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 1s ease-out,
+      transform 1s ease-out;
+  }
+  .fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener("astro:page-load", () => {
+    const elements = document.querySelectorAll(".scroll-reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-in");
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+  });
+</script>

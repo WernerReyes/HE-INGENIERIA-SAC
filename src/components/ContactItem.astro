@@ -1,0 +1,19 @@
+---
+interface Props {
+  icon: (props: Record<string, any>) => any;
+  title: string;
+  value: string;
+}
+
+const { icon: Icon, title, value } = Astro.props as Props;
+---
+
+<div class="flex items-center text-start space-x-4 p-6 bg-[#1D2D50] rounded-lg">
+  <div class="bg-blue-600 p-3 rounded-lg">
+    <Icon class="w-6 h-6 text-white" />
+  </div>
+  <div>
+    <h3>{title}</h3>
+    <p>{value}</p>
+  </div>
+</div>

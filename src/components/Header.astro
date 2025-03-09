@@ -1,0 +1,138 @@
+---
+import AlignJustify from "@components/icons/AlignJustify.astro";
+import X from "@components/icons/X.astro";
+import { LANDING_SECTIONS } from "@lib/constants/routes";
+---
+
+<header>
+  <nav
+    class={`fixed top-0 left-0 w-full z-50 transition-all duration-300 scrolled`}
+  >
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <!-- Logo and Brand Name -->
+      <div class="flex items-center space-x-3">
+        <img src="/logo.svg" alt="HE Ingeniería" class="w-12 h-12" />
+        <span class="text-2xl font-bold text-white">HE INGENIERÍA S.A.C.</span>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex space-x-8 text-white">
+        {
+          LANDING_SECTIONS.map((section) => (
+            <a
+              href={`#${section.id}`}
+              class={`cursor-pointer transition font-semibold activeSection === section.id ? "text-blue-600 font-semibold" : "hover:text-blue-600"`}
+            >
+              {section.name}
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="toggleButton" class="md:hidden text-white cursor-pointer">
+        <AlignJustify
+          id="icon-open"
+          class="transition-opacity duration-300"
+        />
+        <X
+          id="icon-close"
+          class="transition-opacity duration-300 hidden"
+        />
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobileMenu"
+      class="hidden bg-primary/80 absolute top-20 left-0 w-full p-6 text-white"
+    >
+      {
+        LANDING_SECTIONS.map((section) => (
+          <a
+            href={`#${section.id}`}
+            class={`block py-3 text-lg font-medium  transition cursor-pointer "text-blue-600" "hover:text-blue-600`}
+          >
+            {section.name}
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+</header>
+
+<script is:inline>
+  const mobileButton = document.querySelector("#toggleButton");
+  const mobileMenu = document.querySelector("#mobileMenu");
+  mobileButton.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+    if (mobileMenu.classList.contains("hidden")) {
+      mobileButton.lastElementChild.classList.add("hidden");
+      mobileButton.firstElementChild.classList.remove("hidden");
+    } else {
+      mobileButton.lastElementChild.classList.remove("hidden");
+      mobileButton.firstElementChild.classList.add("hidden");
+    }
+  });
+
+  function updateStyles() {
+    const width = window.innerWidth;
+
+    if (width > 768) {
+      if (!mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.add("hidden");
+        mobileButton.lastElementChild.classList.add("hidden");
+        mobileButton.firstElementChild.classList.remove("hidden");
+      }
+    }
+  }
+
+  window.addEventListener("resize", updateStyles);
+  updateStyles(); // Run on load
+
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("Window Width:", window.innerWidth);
+    const LANDING_SECTIONS = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navLinks.forEach((link) => {
+              if (link.getAttribute("href") === `#${entry.target.id}`) {
+                link.classList.add("text-blue-500", "font-bold"); // Add active styles
+              } else {
+                link.classList.remove("text-blue-500", "font-bold"); // Remove styles
+              }
+            });
+          }
+        });
+      },
+      { threshold: 0.5 } // Trigger when 50% of the section is visible
+    );
+
+    LANDING_SECTIONS.forEach((section) => observer.observe(section));
+  });
+</script>
+
+<style>
+  nav {
+    animation: nav-shadown 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
+  }
+
+  @keyframes nav-shadown {
+    0% {
+      background-color: transparent;
+    }
+    to {
+      background-color: color-mix(
+        in oklab,
+        var(--color-primary) /* #0a2239 */ 80%,
+        transparent
+      );
+    }
+  }
+</style>

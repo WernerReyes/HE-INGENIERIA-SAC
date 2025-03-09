@@ -1,0 +1,11 @@
+<section
+  {...Astro.props}
+  class:list={[
+    "scroll-m-20 w-full mx-auto lg:max-w-4xl md:max-w-2xl",
+    Astro.props.class,
+  ]}
+>
+  <div class="scroll-reveal text-center max-sm:px-4 max-xl:px-10 max-w-7xl w-full flex flex-col items-center mx-auto">
+    <slot />
+  </div>
+</section>

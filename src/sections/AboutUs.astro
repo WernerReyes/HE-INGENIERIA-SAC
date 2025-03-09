@@ -1,0 +1,64 @@
+---
+import Image from "@components/ui/Image.astro";
+import SectionLayout from "@layouts/SectionLayout.astro";
+---
+
+<SectionLayout id="about" class="bg-primary text-white py-20">
+ 
+    <h2
+      class="text-4xl font-bold underline decoration-secondary text-white mb-6 relative inline-block"
+    >
+      Sobre Nosotros
+      <span class="absolute left-0 bottom-0 w-full h-1 bg-secondary"></span>
+    </h2>
+
+    {/* Text Animation */}
+    <p class="text-lg text-gray-300 w-full mb-8">
+      En{" "}
+      <span class="text-secondary font-semibold"> HE INGENIERÍA S.A.C. </span>{
+        " "
+      }
+      nos especializamos en ingeniería y construcción de alta calidad. Contamos con
+      un equipo altamente capacitado para llevar a cabo proyectos de infraestructura
+      eléctrica, sistemas de protección a tierra y mantenimiento eléctrico.
+    </p>
+
+    {/* Image Grid Animation */}
+    <div
+      class="relative flex flex-col justify-between h-full w-full mt-5"
+    >
+      <div class="w-full">
+        {/* Row 1 */}
+        <div class="flex flex-col sm:gap-x-10 w-full mb-10 sm:flex-row">
+          <Image
+            severity="tertiary"
+            src="https://images.unsplash.com/photo-1498084393753-b411b2d26b34?auto=format&fit=crop&q=80&w=1469&ixlib=rb-4.0.3"
+          />
+
+          <Image
+            severity="secondary"
+            src="https://images.unsplash.com/photo-1498084393753-b411b2d26b34?auto=format&fit=crop&q=80&w=1469&ixlib=rb-4.0.3"
+          />
+        </div>
+
+        {/* Row 2 */}
+        <div class="flex flex-col  sm:gap-x-10 w-full mb-5 sm:flex-row">
+          <Image
+            severity="tertiary"
+            src="https://images.unsplash.com/photo-1498084393753-b411b2d26b34?auto=format&fit=crop&q=80&w=1469&ixlib=rb-4.0.3"
+          />
+
+          <Image
+            severity="secondary"
+            src="https://images.unsplash.com/photo-1498084393753-b411b2d26b34?auto=format&fit=crop&q=80&w=1469&ixlib=rb-4.0.3"
+          />
+
+          <Image
+            severity="tertiary"
+            src="https://images.unsplash.com/photo-1498084393753-b411b2d26b34?auto=format&fit=crop&q=80&w=1469&ixlib=rb-4.0.3"
+          />
+        </div>
+      </div>
+    </div>
+
+</SectionLayout>

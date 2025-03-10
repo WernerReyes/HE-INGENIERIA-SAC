@@ -2,18 +2,33 @@
 interface Props {
   icon: (props: Record<string, any>) => any;
   title: string;
-  value: string;
+  value?: string;
+  btn?: boolean;
 }
 
-const { icon: Icon, title, value } = Astro.props as Props;
+const { icon: Icon, title, value, btn } = Astro.props as Props;
+
+
 ---
 
 <div class="flex items-center text-start space-x-4 p-6 bg-[#1D2D50] rounded-lg">
   <div class="bg-blue-600 p-3 rounded-lg">
-    <Icon class="w-6 h-6 text-white" />
+    <Icon class="w-6 h-6 text-white transition-transform duration-300 ease-out hover:scale-110" />
   </div>
   <div>
     <h3>{title}</h3>
     <p>{value}</p>
+    
+    {btn && (
+      <>
+        <a
+        onclick="document.getElementById('alert-dialog').showModal()" 
+          class=" text-white font-bold  rounded mt-2"
+        >
+          Ver más detalles
+        </a>
+      
+      </>
+    )}
   </div>
 </div>

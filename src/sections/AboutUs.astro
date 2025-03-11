@@ -3,26 +3,14 @@ import Image from "@components/ui/Image.astro";
 import SectionLayout from "@layouts/SectionLayout.astro";
 ---
 
-<SectionLayout id="about" class="bg-primary text-white py-20">
- 
-    <h2
-      class="text-4xl font-bold underline decoration-secondary text-white mb-6 relative inline-block"
-    >
-      Sobre Nosotros
-      <span class="absolute left-0 bottom-0 w-full h-1 bg-secondary"></span>
-    </h2>
-
-    {/* Text Animation */}
-    <p class="text-lg text-gray-300 w-full mb-8">
-      En{" "}
-      <span class="text-secondary font-semibold"> HE INGENIERÍA S.A.C. </span>{
-        " "
-      }
-      nos especializamos en ingeniería y construcción de alta calidad. Contamos con
-      un equipo altamente capacitado para llevar a cabo proyectos de infraestructura
-      eléctrica, sistemas de protección a tierra y mantenimiento eléctrico.
-    </p>
-
+<SectionLayout
+ header={{
+  tag: "Sobre Nosotros",
+  title: "Construcción y Mantenimiento Industrial",
+  description: "En HE INGENIERÍA S.A.C. nos especializamos en ingeniería y construcción de alta calidad. Contamos con un equipo altamente capacitado para llevar a cabo proyectos de infraestructura eléctrica, sistemas de protección a tierra y mantenimiento eléctrico.",
+  dark: true
+ }}
+id="about" class="bg-primary text-white py-20">
     {/* Image Grid Animation */}
     <div
       class="relative flex flex-col justify-between h-full w-full mt-5"

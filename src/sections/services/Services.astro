@@ -1,0 +1,16 @@
+---
+import SectionLayout from "@layouts/SectionLayout.astro";
+import { ServiceCard } from "@sections/services/components/ServiceCard";
+---
+
+<SectionLayout 
+ header={{
+  tag: "Nuestros Servicios",
+  title: "Soluciones de ingeniería especializadas",
+  description: "Ofrecemos servicios integrales en diferentes áreas de la ingeniería para satisfacer las necesidades de su proyecto."
+ }}
+id="services" class="bg-slate-100 text-black py-20">
+    <ServiceCard client:visible />
+  </div>
+</SectionLayout>
+

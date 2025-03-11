@@ -1,4 +1,5 @@
 ---
+import "@fontsource-variable/outfit";
 import { ClientRouter } from "astro:transitions";
 import "@styles/global.css";
 import Header from "@components/Header.astro";
@@ -16,12 +17,12 @@ import Footer from "@components/Footer.astro";
     <title>Astro Basics</title>
     <ClientRouter />
   </head>
-  <body>
+  <body id="root">
     <Header />
     <slot />
+    <WhatsApp />
+    <Footer />
   </body>
-  <WhatsApp />
-  <Footer />
 </html>
 
 <style>
@@ -30,5 +31,11 @@ import Footer from "@components/Footer.astro";
     margin: 0;
     width: 100%;
     height: 100%;
+    font-family: "Outfit Variable", sans-serif;
   }
 </style>
+
+<script>
+  import { createIcons, icons } from "lucide";
+  createIcons({ icons });
+</script>

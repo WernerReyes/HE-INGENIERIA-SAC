@@ -2,12 +2,12 @@
 import Hero from "@sections/Hero.astro";
 import AboutUs from "@sections/AboutUs.astro";
 import Contact from "@sections/Contact.astro";
+import Services from "@sections/services/Services.astro";
 
 import Layout from "@layouts/Layout.astro";
-import Services from "@sections/Services.astro";
 ---
 
-<Layout title="Astro Basics">
+<Layout title="HE INGENIERÍA S.A.C. | Construcción y Mantenimiento Industrial">
   <Hero />
   <AboutUs />
   <Services />
@@ -22,13 +22,67 @@ import Services from "@sections/Services.astro";
       opacity 1s ease-out,
       transform 1s ease-out;
   }
+  /* Backdrop animation */
   .fade-in {
-    opacity: 1;
-    transform: translateY(0);
+    animation: fadeIn 0.3s ease-in-out forwards;
+  }
+
+  .fade-out {
+    animation: fadeOut 0.3s ease-in-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar styles */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    border: 1px solid transparent;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+  }
+
+  /* Thin Scrollbar */
+  .thin-scrollbar::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
   }
 </style>
 

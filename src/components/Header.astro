@@ -1,18 +1,18 @@
 ---
-import AlignJustify from "@components/icons/AlignJustify.astro";
-import X from "@components/icons/X.astro";
-import { LANDING_SECTIONS } from "@lib/constants/routes";
+import { LANDING_SECTIONS } from "@data/routes";
 ---
 
 <header>
   <nav
-    class={`fixed top-0 left-0 w-full z-50 transition-all duration-300 scrolled`}
+    class={`fixed top-0 left-0 w-full z-10 transition-all duration-300 scrolled`}
   >
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
       <!-- Logo and Brand Name -->
       <div class="flex items-center space-x-3">
         <img src="/logo.svg" alt="HE Ingeniería" class="w-12 h-12" />
-        <span class="text-2xl font-bold text-white">HE INGENIERÍA S.A.C.</span>
+        <span class="text-xl md:text-2xl font-bold text-white"
+          >HE INGENIERÍA S.A.C.</span
+        >
       </div>
 
       <!-- Desktop Navigation -->
@@ -31,14 +31,10 @@ import { LANDING_SECTIONS } from "@lib/constants/routes";
 
       <!-- Mobile Menu Button -->
       <button id="toggleButton" class="md:hidden text-white cursor-pointer">
-        <AlignJustify
-          id="icon-open"
-          class="transition-opacity duration-300"
-        />
-        <X
-          id="icon-close"
-          class="transition-opacity duration-300 hidden"
-        />
+        <i id="icon-open" data-lucide="align-justify" class="w-6 h-6 text-white"
+        ></i>
+        <i id="icon-close" data-lucide="x" class="w-6 h-6 text-white hidden"
+        ></i>
       </button>
     </div>
 
@@ -90,30 +86,38 @@ import { LANDING_SECTIONS } from "@lib/constants/routes";
   window.addEventListener("resize", updateStyles);
   updateStyles(); // Run on load
 
-  document.addEventListener("DOMContentLoaded", () => {
-    console.log("Window Width:", window.innerWidth);
-    const LANDING_SECTIONS = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav a");
+  document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+      const LANDING_SECTIONS = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll("nav a");
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            navLinks.forEach((link) => {
-              if (link.getAttribute("href") === `#${entry.target.id}`) {
-                link.classList.add("text-blue-500", "font-bold"); // Add active styles
-              } else {
-                link.classList.remove("text-blue-500", "font-bold"); // Remove styles
-              }
-            });
-          }
-        });
-      },
-      { threshold: 0.5 } // Trigger when 50% of the section is visible
-    );
+      // Prevent duplicate observers
+      if (window.navObserver) {
+        window.navObserver.disconnect();
+      }
 
-    LANDING_SECTIONS.forEach((section) => observer.observe(section));
-  });
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              navLinks.forEach((link) => {
+                if (link.getAttribute("href") === `#${entry.target.id}`) {
+                  link.classList.add("text-blue-500", "font-bold"); // Add active styles
+                } else {
+                  link.classList.remove("text-blue-500", "font-bold"); // Remove styles
+                }
+              });
+            }
+          });
+        },
+        { threshold: 0.3 } // Trigger when 50% of the section is visible
+      );
+
+      LANDING_SECTIONS.forEach((section) => observer.observe(section));
+    },
+    500
+  );
 </script>
 
 <style>

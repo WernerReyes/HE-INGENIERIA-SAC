@@ -14,14 +14,16 @@
       "@styles/*": [
         "src/styles/*"
       ],
-      "@lib/*": [
-        "src/lib/*"
+      "@data/*": [
+        "src/data/*"
       ],
       "@layouts/*": [
         "src/layouts/*"
       ],
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
      
-     
-    }
   }
+ 
 }

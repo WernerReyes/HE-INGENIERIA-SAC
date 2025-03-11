@@ -1,5 +1,5 @@
 import type { ServiceItem } from "@data/services";
-import { ChevronRight, X } from "lucide-react";
+import { ChevronRight, Phone, X } from "lucide-react";
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");
@@ -55,7 +55,7 @@ export const ModalDetails = ({ selectedService, isOpen, setOpen }: Props) => {
         </div>
       </div>
 
-      <div className="p-4 sm:p-6 thin-scrollbar md:p-8 overflow-y-auto max-h-[calc(90vh-150px)] sm:max-h-[calc(90vh-200px)]">
+      <div className="p-4 sm:p-6 thin-scrollbar md:p-8 overflow-y-auto max-h-[calc(90vh-150px)] sm:max-h-[calc(100vh-400px)]">
         <p className="text-slate-600 mb-6">{selectedService.description}</p>
 
         <div className="space-y-8">
@@ -100,17 +100,20 @@ export const ModalDetails = ({ selectedService, isOpen, setOpen }: Props) => {
           ))}
         </div>
 
-        <div className="mt-6 pt-4 border-t flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-          <div className="text-xs sm:text-sm text-slate-500">
+        <div className="mt-6 pt-4 mb-2 border-t border-slate-500 w-4/4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+          <div className="text-xs  text-slate-500 w-3/4">
             ¿Necesita más información? Contáctenos para una consulta
             personalizada.
           </div>
-          <button
-            className="rounded-lg text-white w-full sm:w-auto"
+          <a
+            target="_blank"
+            href="https://api.whatsapp.com/send?phone=983113550&text=Hola tengo una consulta..."
             style={{ backgroundColor: selectedService.color }}
+            className="cursor-pointer w-1/4 text-white  py-2 rounded-md font-semibold transition transform hover:scale-105 duration-200 flex items-center justify-center space-x-2"
           >
-            Cerrar
-          </button>
+            <Phone size={13} />
+            <span className="text-xs">983113550</span>
+          </a>
         </div>
       </div>
     </Modal>

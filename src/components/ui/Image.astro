@@ -14,17 +14,17 @@ const { src, severity = "primary" } = Astro.props as Props;
         "absolute top-0 left-0 w-full h-full mt-1 ml-1 rounded-lg",
         severity === "tertiary" && "bg-tertiary",
         severity === "secondary" && "bg-secondary",
-        severity === "primary" && "bg-primary"
+        severity === "primary" && "bg-primary",
       ]}></span>
     <div
       class:list={[
         "relative h-full p-1 bg-primary border-2 rounded-lg",
         severity === "tertiary" && "border-tertiary",
         severity === "secondary" && "border-secondary",
-        severity === "primary" && "border-primary"
+        severity === "primary" && "border-primary",
       ]}
     >
-      <img src={src} />
+      <img src={src} alt="sobre nosotros" />
     </div>
   </div>
 </div>

@@ -3,10 +3,10 @@ interface Props {
   icon: string;
   title: string;
   value?: string;
-  btn?: boolean;
+  
 }
 
-const { icon, title, value, btn } = Astro.props as Props;
+const { icon, title, value } = Astro.props as Props;
 
 ---
 <div class="flex items-center text-start space-x-4 p-6 bg-[#1D2D50] rounded-lg">
@@ -16,17 +16,5 @@ const { icon, title, value, btn } = Astro.props as Props;
   <div>
     <h3>{title}</h3>
     <p>{value}</p>
-    
-    {btn && (
-      <>
-        <a
-        onclick="document.getElementById('alert-dialog').showModal()" 
-          class=" text-white font-bold  rounded mt-2"
-        >
-          Ver más detalles
-        </a>
-      
-      </>
-    )}
   </div>
 </div>

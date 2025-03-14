@@ -1,46 +1,7 @@
----
-interface SectionLayoutProps {
-  header?: {
-    tag: string;
-    title: string;
-    description?: string;
-    dark?: boolean;
-  };
-}
-const { header } = Astro.props as SectionLayoutProps;
----
-
 <section {...Astro.props} class:list={["py-20", Astro.props.class]}>
   <div
     class="scroll-reveal text-center max-sm:px-4 max-xl:px-10 max-w-7xl w-full flex flex-col items-center mx-auto"
   >
-    {/* Section header */}
-    {
-      header && (
-        <div class="mb-16">
-          <div class="inline-block px-4 py-1  rounded-full text-tertiary bg-tertiary/10 text-2xl font-medium mb-4">
-            {header.tag}
-          </div>
-          <h2
-            class:list={[
-              "text-3xl md:text-4xl  font-bold mb-4",
-              header.dark ? "text-white" : "text-slate-900",
-            ]}
-          >
-            {header.title}
-          </h2>
-          <p
-            class:list={[
-              "text-lg max-w-4xl",
-              header.dark ? "text-gray-300" : "text-gray-600",
-            ]}
-          >
-            {header.description}
-          </p>
-        </div>
-      )
-    }
-
     <slot />
   </div>
 </section>

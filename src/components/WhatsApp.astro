@@ -1,6 +1,30 @@
----
-// No necesitas código en el bloque de Astro para este componente
----
+<a
+  href="https://api.whatsapp.com/send?phone=983113550&text=Hola tengo una consulta..."
+  class="whatsApp"
+  target="_blank"
+>
+
+  <img src="/WhatsApp.webp" alt="WhatsApp" width="50" height="50" />
+  <span id="text-w"></span>
+  
+</a>
+<script>
+//   // @ts-ignore
+//   import Typewriter from "typewriter-effect/dist/core";
+
+//   new Typewriter("#text-w", {
+//   autoStart: true,
+//   loop: true,
+//   showCursor: false,
+//   delay: 75,
+//   cursorClassName: "hidden",
+// }).pauseFor(2000) 
+// .typeString("Contáctanos")
+// .pauseFor(1000)
+// .deleteAll()
+// .start();
+
+</script>
 
 <style>
   @keyframes bounce {
@@ -30,14 +54,13 @@
     position: fixed;
     width: auto;
     height: auto;
-    right: 10px;
-    bottom: 10px;
+    right: 15px;
+    bottom: 15px;
     text-align: center;
     padding: 10px;
     z-index: 999;
     display: flex;
     align-items: center;
-    gap: 10px;
     background-color: #25d366;
     color: white;
     border-radius: 45px !important;
@@ -55,30 +78,3 @@
     background-color: #1da851;
   }
 </style>
-
-<a
-  href="https://api.whatsapp.com/send?phone=983113550&text=Hola tengo una consulta..."
-  class="whatsApp"
-  target="_blank"
->
-
-  <img src="/WhatsApp.webp" alt="WhatsApp" width="50" height="50" />
-  <span id="text-w"></span>
-  
-</a>
-<script>
-  // @ts-ignore
-  import Typewriter from "typewriter-effect/dist/core";
-
-  new Typewriter("#text-w", {
-  autoStart: true,
-  loop: true,
-  delay: 75,
-  
-}).pauseFor(2000) 
-.typeString("Déjanos tus <br> comentarios")
-.pauseFor(1000)
-.deleteAll()
-.start();
-
-</script>

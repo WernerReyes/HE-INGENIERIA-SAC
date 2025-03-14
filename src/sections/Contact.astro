@@ -1,19 +1,26 @@
 ---
 import ContactItem from "@components/ContactItem.astro";
 import Input from "@components/ui/Input.astro";
+import Tag from "@components/ui/Tag.astro";
+import TitleSection from "@components/ui/TitleSection.astro";
 import SectionLayout from "@layouts/SectionLayout.astro";
 ---
 
 <SectionLayout
-  header={{
-    tag: "Contáctanos",
-    title: "¿Tienes alguna duda o consulta?",
-    description: "Escríbenos y te responderemos a la brevedad.",
-    dark: true,
-  }}
   id="contact"
   class="bg-primary text-white py-20"
->
+> 
+<div class="mb-16">
+  <Tag text="Contáctanos" mode="dark" />
+  <TitleSection
+    underlineText="duda"
+    breakPart="duda"
+    title="¿Tienes alguna duda o consulta?"
+  />
+  <p class="text-gray-300 text-lg my-10 leading-relaxed max-w-4xl">
+    Escríbenos y te responderemos a la brevedad.
+  </p>
+</div>
   <div class={"grid md:grid-cols-2 gap-12"}>
     <div class="space-y-8">
       <ContactItem icon="phone" title="Teléfono" value="983113550" />

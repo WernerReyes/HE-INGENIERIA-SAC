@@ -1,29 +1,33 @@
 ---
 import SectionLayout from "@layouts/SectionLayout.astro";
 ---
-
 <!-- Background Image -->
 <div
-  style="height: var(5rem + 100vh);"
-  class="absolute inset-0 min-h-screen h-[calc(15%+100vh)] max-[21rem]:h-[calc(40%+100vh)] md:h-full"
+
+  class="absolute h-auto min-h-screen inset-0 "
 >
   <img
     src="/hero2.jpg"
     alt="Electrical infrastructure"
     class="w-full h-full object-cover"
   />
-  <div class="absolute inset-0 bg-gradient-to-b from-primary/75 to-primary/30">
+  <div class="absolute inset-0  bg-gradient-to-b from-primary/75 to-primary/30">
   </div>
 </div>
 
-{/* Particles Canvas */}
-<canvas class="absolute inset-0"></canvas>
 
 <SectionLayout
   id="home"
-  class="relative flex max-[21rem]:items-end max-[21rem]:pb-10 items-center min-h-screen justify-start max-[21rem]:h-[calc(40%+100vh)] h-[calc(15%+100vh)] sm:bg-transparent sm:h-full text-start"
+  class="flex items-center h-auto min-h-screen bg-red-400 justify-start sm:h-full text-start"
 >
-  <div class="max-w-4xl me-auto text-start xl:mt-30 3xl:mt-0">
+
+{/* Particles Canvas */}
+<div class="max-h-[calc(100vh-150px)] md:max-h-[calc(100vh-300px)] h-full  w-full ">
+<div class="relative w-full h-full">
+  <canvas class="absolute hero-particles"></canvas>
+</div>
+
+  <div class="max-w-4xl me-auto text-start">
     <h1
       id="typed-text"
       class="max-[21rem]:text-2xl text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
@@ -71,12 +75,13 @@ import SectionLayout from "@layouts/SectionLayout.astro";
       </div>
     </div>
   </div>
+</div>
 </SectionLayout>
 
 <script>
   // @ts-ignore
   import Typewriter from "typewriter-effect/dist/core";
-
+ 
   new Typewriter("#typed-text", {
     autoStart: true,
     loop: true,
@@ -101,94 +106,61 @@ import SectionLayout from "@layouts/SectionLayout.astro";
     .deleteAll()
     .start();
 
-  window.addEventListener("load", () => {
-    const canvas = document.querySelector("canvas") as HTMLCanvasElement;
+  document.addEventListener("astro:page-load", () => {
+    
+
+    const canvas = document.querySelector(
+      ".hero-particles"
+    ) as HTMLCanvasElement;
+
     const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    // Set canvas dimensions
-    const setCanvasDimensions = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    setCanvasDimensions();
-    window.addEventListener("resize", setCanvasDimensions);
+    const particles = Array.from({ length: 100 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 3 + 1,
+      speedX: Math.random() * 1 - 0.5,
+      speedY: Math.random() * 1 - 0.5,
+    }));
 
-    // Particle class
-    class Particle {
-      x: number;
-      y: number;
-      size: number;
-      speedX: number;
-      speedY: number;
-      color: string;
-
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2.5 + 0.5;
-        this.speedX = Math.random() * 0.8 - 0.4;
-        this.speedY = Math.random() * 0.8 - 0.4;
-        this.color = "#60A5FA";
-      }
-
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        if (this.x > canvas.width) this.x = 0;
-        if (this.x < 0) this.x = canvas.width;
-        if (this.y > canvas.height) this.y = 0;
-        if (this.y < 0) this.y = canvas.height;
-      }
-
-      draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    // Create particles
-    const particles: Particle[] = [];
-    const particleCount = 70;
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
-    }
-
-    // Animation loop
-    const animate = () => {
+    function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Update and draw particles
-      particles.forEach((particle) => {
-        particle.update();
-        particle.draw();
+      particles.forEach((p) => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+        ctx.fillStyle = "#60A5FA";
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
       });
-
-      // Draw connections
-      for (let a = 0; a < particles.length; a++) {
-        for (let b = a + 1; b < particles.length; b++) {
-          const dx = particles[a].x - particles[b].x;
-          const dy = particles[a].y - particles[b].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 120) {
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(96, 165, 250, ${0.25 - distance / 500})`;
-            ctx.lineWidth = 0.8;
-            ctx.moveTo(particles[a].x, particles[a].y);
-            ctx.lineTo(particles[b].x, particles[b].y);
-            ctx.stroke();
-          }
-        }
-      }
-
       requestAnimationFrame(animate);
-    };
+    }
 
     animate();
   });
+
+  window.addEventListener("resize", () => {
+    const canvas = document.querySelector(
+      ".hero-particles"
+    ) as HTMLCanvasElement;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+  
 </script>
 
-<style></style>
+<style>
+  canvas {
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    
+    
+  }
+</style>
+
+

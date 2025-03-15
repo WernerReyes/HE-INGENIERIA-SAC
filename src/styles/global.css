@@ -5,6 +5,7 @@
   --color-secondary: #f4a261;
   --color-tertiary: #2563eb;
   --text-md: 1.125rem;
+  --breakpoint-3xl: 1600px;
 }
 
 :root {

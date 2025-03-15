@@ -114,7 +114,7 @@ export const ServiceCard = () => {
             {/* Content section */}
             <div className="p-5 sm:p-8 lg:p-12 order-2">
               <div
-                className="inline-block px-3 py-1 rounded-full text-2xl font-medium mb-3 sm:mb-4"
+                className="inline-block px-3 py-1 rounded-full text-xl font-medium mb-3 sm:mb-4"
                 style={{
                   backgroundColor: `${activeService.color}15`,
                   color: activeService.color,

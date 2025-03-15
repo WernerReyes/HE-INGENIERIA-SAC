@@ -5,7 +5,7 @@ import SectionLayout from "@layouts/SectionLayout.astro";
 <!-- Background Image -->
 <div 
 style="height: var(5rem + 100vh);"
-class="absolute inset-0 min-h-screen h-[calc(15%+100vh)] max-[30rem]:h-[calc(40%+100vh)] md:h-full">
+class="absolute inset-0 min-h-screen h-[calc(15%+100vh)] max-[21rem]:h-[calc(40%+100vh)] md:h-full">
   <img
     src="/hero2.jpg"
     alt="Electrical infrastructure"
@@ -22,32 +22,32 @@ class="absolute inset-0 min-h-screen h-[calc(15%+100vh)] max-[30rem]:h-[calc(40%
 <SectionLayout
   id="home"
 
-  class="relative flex max-[30rem]:items-end max-[30rem]:pb-10 items-center  min-h-screen justify-start max-[30rem]:h-[calc(40%+100vh)] h-[calc(15%+100vh)] sm:bg-transparent sm:h-full text-start"
+  class="relative flex max-[21rem]:items-end max-[21rem]:pb-10 items-center  min-h-screen justify-start max-[21rem]:h-[calc(40%+100vh)] h-[calc(15%+100vh)] sm:bg-transparent sm:h-full text-start"
 >
    <div class="max-w-4xl me-auto text-start">
-    <h1 id="typed-text" class="max-[30rem]:text-2xl text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight" >
+    <h1 id="typed-text" class="max-[21rem]:text-2xl text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight" >
       Expertos en <span class='text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600'> Construcción y Mantenimiento Industrial</span>
     </h1>
      
     </div>
   
     <div class="max-w-4xl me-auto text-start min-h-[300px] rounded-2xl">
-      <p class="max-[30rem]:text-sm text-lg text-slate-200 mb-8 max-w-2xl">
+      <p class="max-[21rem]:text-sm text-lg text-slate-200 mb-8 max-w-2xl">
         Experiencia en proyectos de infraestructura eléctrica, sistemas de protección a tierra y mantenimiento
         eléctrico.
       </p>
 
-      <div class="max-[30rem]:text-sm grid grid-cols-1 items-start sm:grid-cols-3 gap-6">
+      <div class="max-[21rem]:text-sm grid grid-cols-1 items-start sm:grid-cols-3 gap-6">
         <div class="bg-slate-800/70 backdrop-blur-sm p-3 md:p-6 rounded-xl border border-slate-700/50">
-          <div class="max-[30rem]:text-xl text-3xl font-bold text-white mb-1">15+</div>
+          <div class="max-[21rem]:text-xl text-3xl font-bold text-white mb-1">15+</div>
           <p class="text-slate-300">Años de experiencia</p>
         </div>
         <div class="bg-slate-800/70 backdrop-blur-sm p-3 md:p-6 rounded-xl border border-slate-700/50">
-          <div class="max-[30rem]:text-xl text-3xl font-bold text-white mb-1">200+</div>
+          <div class="max-[21rem]:text-xl text-3xl font-bold text-white mb-1">200+</div>
           <p class="text-slate-300">Proyectos completados</p>
         </div>
         <div class="bg-slate-800/70 backdrop-blur-sm p-3 md:p-6 rounded-xl border border-slate-700/50">
-          <div class="max-[30rem]:text-xl text-3xl font-bold text-white mb-1">50+</div>
+          <div class="max-[21rem]:text-xl text-3xl font-bold text-white mb-1">50+</div>
           <p class="text-slate-300">Clientes satisfechos</p>
         </div>
       </div>
@@ -59,19 +59,19 @@ class="absolute inset-0 min-h-screen h-[calc(15%+100vh)] max-[30rem]:h-[calc(40%
   // @ts-ignore
   import Typewriter from "typewriter-effect/dist/core";
 
-  // new Typewriter("#typed-text", {
-  //   autoStart: true,
-  //   loop: true,
-  //   delay: 75,
-  // }).typeString("<span class='text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600'>Ingeniería y Construcción</span> de Alta Calidad")
-  // .pauseFor(2000)
-  // .deleteAll()
-  // .start().typeString("Expertos en <span class='text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600'>Sistemas Eléctricos</span>")
-  // .pauseFor(2000)
-  // .deleteAll()
-  // .start()
-  // .typeString("Expertos en <span class='text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600'> Construcción y Mantenimiento Industrial</span>")
-  // .pauseFor(2000).deleteAll().start();
+  new Typewriter("#typed-text", {
+    autoStart: true,
+    loop: true,
+    delay: 75,
+  }).typeString("<span class='text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600'>Ingeniería y Construcción</span> de Alta Calidad")
+  .pauseFor(2000)
+  .deleteAll()
+  .start().typeString("Expertos en <span class='text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600'>Sistemas Eléctricos</span>")
+  .pauseFor(2000)
+  .deleteAll()
+  .start()
+  .typeString("Expertos en <span class='text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600'> Construcción y Mantenimiento Industrial</span>")
+  .pauseFor(2000).deleteAll().start();
 
 
   window.addEventListener("load", () => {

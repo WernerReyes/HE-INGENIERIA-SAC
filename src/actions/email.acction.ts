@@ -1,6 +1,6 @@
 import { defineAction } from "astro:actions";
 import { z } from "astro:schema";
-import { Resend } from "resend";
+
 import {
   MAILER_SERVICE,
   MAILER_EMAIL,

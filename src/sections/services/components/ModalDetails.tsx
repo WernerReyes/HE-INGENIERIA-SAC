@@ -21,7 +21,9 @@ export const ModalDetails = ({ selectedService, isOpen, setOpen }: Props) => {
         content: {
           top: "50%",
           left: "50%",
-
+          width: "auto",
+          height: "auto",
+          filter: "none",
           marginRight: "-50%",
           transform: "translate(-50%, -50%)",
         },
@@ -33,7 +35,7 @@ export const ModalDetails = ({ selectedService, isOpen, setOpen }: Props) => {
       <div className="relative h-[150px] sm:h-[200px]">
         {/* <div className="absolute end-0 p-0  bg-red-400"> */}
         <button
-          className="absolute cursor-pointer end-0 text-slate-500 p-3 z-30"
+          className="absolute cursor-pointer end-0 text-white p-3 z-30"
           onClick={() => setOpen(false)}
         >
           <X />
@@ -107,7 +109,7 @@ export const ModalDetails = ({ selectedService, isOpen, setOpen }: Props) => {
           </div>
           <a
             target="_blank"
-            href="https://api.whatsapp.com/send?phone=983113550&text=Hola tengo una consulta..."
+            href="https://api.whatsapp.com/send?phone=+51917549994&text=Hola tengo una consulta..."
             style={{ backgroundColor: selectedService.color }}
             className="cursor-pointer w-1/4 text-white  py-2 rounded-md font-semibold transition transform hover:scale-105 duration-200 flex items-center justify-center space-x-2"
           >

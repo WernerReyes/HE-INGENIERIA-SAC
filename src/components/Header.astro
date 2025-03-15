@@ -150,7 +150,7 @@ import { LANDING_SECTIONS } from "@data/routes";
             }
           });
         },
-        { threshold: 0.3 } // Trigger when 50% of the section is visible
+        { threshold: 0.1, rootMargin: "50px" } // Trigger when 50% of the section is visible
       );
 
       LANDING_SECTIONS.forEach((section) => observer.observe(section));

@@ -1,0 +1,7 @@
+name = "heingenieria"
+type = "javascript"
+
+[build]
+  command = "pnpm build"  
+  dir = "dist"            
+

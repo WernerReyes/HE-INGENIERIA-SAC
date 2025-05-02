@@ -21,30 +21,31 @@ export const ModalDetails = ({ selectedService, isOpen, setOpen }: Props) => {
         content: {
           top: "50%",
           left: "50%",
-          width: "auto",
-          height: "auto",
-          filter: "none",
+
+          // height: "auto",
           marginRight: "-50%",
           transform: "translate(-50%, -50%)",
         },
       }}
-      className={`fixed bg-white w-10/11 md:w-1/2 h-3/4 p-0 overflow-hidden rounded-xl border-none shadow-2xl ${
+      className={`fixed bg-white w-10/11 md:w-1/2 h-3/4 p-0  rounded-xl border-none shadow-2xl ${
         isOpen ? "fade-in" : "fade-out"
       }`}
     >
       <div className="relative h-[150px] sm:h-[200px]">
         {/* <div className="absolute end-0 p-0  bg-red-400"> */}
-        <button
-          className="absolute cursor-pointer end-0 text-white p-3 z-30"
-          onClick={() => setOpen(false)}
-        >
-          <X />
-        </button>
+
         {/* </div> */}
         <div
           className="absolute inset-0 z-10 opacity-60"
           style={{ backgroundColor: selectedService.color }}
         />
+        <button
+          style={{ backgroundColor: selectedService.color, opacity: 0.8 }}
+          className="cursor-pointer absolute m-2 rounded-full end-0 text-white p-2 z-30"
+          onClick={() => setOpen(false)}
+        >
+          <X className="w-4 h-4" />
+        </button>
         <img
           src={selectedService.image || "/placeholder.svg"}
           alt={selectedService.title}
@@ -57,7 +58,7 @@ export const ModalDetails = ({ selectedService, isOpen, setOpen }: Props) => {
         </div>
       </div>
 
-      <div className="p-4 sm:p-6 thin-scrollbar md:p-8 overflow-y-auto max-h-[calc(90vh-150px)] sm:max-h-[calc(100vh-400px)]">
+      <div className="p-4 sm:p-6 invisible-scrollbar md:p-8 overflow-y-auto max-h-[calc(90vh-250px)] sm:max-h-[calc(100vh-400px)]">
         <p className="text-slate-600 mb-6">{selectedService.description}</p>
 
         <div className="space-y-8">
@@ -100,10 +101,8 @@ export const ModalDetails = ({ selectedService, isOpen, setOpen }: Props) => {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="mt-6 pt-4 mb-2 border-t border-slate-500 w-4/4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-          <div className="text-xs  text-slate-500 w-3/4">
+          <div className="mt-6 pt-4 mb-2 border-t border-slate-500 w-full flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 overflow-y-auto max-h-[calc(100vh-200px)]">
+          <div className="text-xs text-slate-500 w-full sm:w-3/4">
             ¿Necesita más información? Contáctenos para una consulta
             personalizada.
           </div>
@@ -111,13 +110,17 @@ export const ModalDetails = ({ selectedService, isOpen, setOpen }: Props) => {
             target="_blank"
             href="https://api.whatsapp.com/send?phone=+51917549994&text=Hola tengo una consulta..."
             style={{ backgroundColor: selectedService.color }}
-            className="cursor-pointer w-1/4 text-white  py-2 rounded-md font-semibold transition transform hover:scale-105 duration-200 flex items-center justify-center space-x-2"
+            className="cursor-pointer w-full sm:w-1/4 text-white py-2 rounded-md font-semibold transition transform hover:scale-105 duration-200 flex items-center justify-center space-x-2"
           >
             <Phone size={13} />
-            <span className="text-xs">983113550</span>
+            <span className="text-[9px] sm:text-xs">917549994</span>
           </a>
         </div>
+        </div>
+
+        
       </div>
+      
     </Modal>
   );
 };

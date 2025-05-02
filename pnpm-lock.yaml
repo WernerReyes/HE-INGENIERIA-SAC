@@ -5762,7 +5762,7 @@ snapshots:
 
   vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)(stylus@0.54.8)(yaml@2.7.0):
     dependencies:
-      esbuild: 0.25.0
+      esbuild: 0.25.2
       postcss: 8.5.3
       rollup: 4.35.0
     optionalDependencies:

@@ -1,9 +1,2 @@
 name = "heingenieria"
-type = "javascript"
-
-[build]
-  command = "pnpm build"  
-  dir = "dist"            
-
-[pages]
-  build_output_dir = "./dist"
+pages_build_output_dir = "./dist"

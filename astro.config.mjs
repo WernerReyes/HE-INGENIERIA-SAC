@@ -3,13 +3,17 @@ import { defineConfig, envField } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
-import vercel from '@astrojs/vercel/serverless';
+// 👈 usa el adapter correcto
+import cloudflare from "@astrojs/cloudflare";
 // https://astro.build/config
+
 export default defineConfig({
   integrations: [react()],
+
   vite: {
     plugins: [tailwindcss()],
   },
+
   env: {
     schema: {
       MAILER_SERVICE: envField.string({ context: "server", access: "secret" }),
@@ -22,5 +26,5 @@ export default defineConfig({
   },
 
   output: 'server',
-  adapter: vercel({}),
+  adapter: cloudflare(),
 });

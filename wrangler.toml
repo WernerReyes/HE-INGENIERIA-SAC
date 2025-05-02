@@ -5,3 +5,5 @@ type = "javascript"
   command = "pnpm build"  
   dir = "dist"            
 
+[pages]
+  build_output_dir = "./dist"
